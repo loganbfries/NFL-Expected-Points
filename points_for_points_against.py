@@ -210,7 +210,7 @@ plt.text(
     horizontalalignment="right",
     verticalalignment="top",
     size=8,
-    color="green",
+    color="red",
     weight="semibold",
     transform=ax.transAxes,
 )
@@ -221,7 +221,7 @@ plt.text(
     horizontalalignment="right",
     verticalalignment="top",
     size=8,
-    color="red",
+    color="green",
     weight="semibold",
     transform=ax.transAxes,
 )
@@ -258,7 +258,7 @@ plt.text(
     horizontalalignment="left",
     verticalalignment="top",
     size=8,
-    color="red",
+    color="green",
     weight="semibold",
     transform=ax.transAxes,
 )
@@ -269,7 +269,7 @@ plt.text(
     horizontalalignment="left",
     verticalalignment="top",
     size=8,
-    color="green",
+    color="red",
     weight="semibold",
     transform=ax.transAxes,
 )
