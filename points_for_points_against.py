@@ -114,12 +114,24 @@ fig, ax = plt.subplots(figsize=dimensions)
 
 for team in teams:
     ax.scatter(
-        nfl_points_dict[team]["avg_points_for"],
         nfl_points_dict[team]["avg_points_against"],
+        nfl_points_dict[team]["avg_points_for"],
         s=1,
         color="white",
     )
 
-images(nfl_points_dict, "avg_points_for", "avg_points_against", ax)
+plt.suptitle("Avg Points For vs. Avg Points Against", size=14, y=0.95)
+
+plt.title(
+    "Through Week: {week}".format(week=week),
+    size=12,
+)
+
+ax.set_xlabel("Avg Points Against", fontsize=16)
+ax.set_ylabel("Avg Points For", fontsize=16)
+
+ax.invert_xaxis()
+
+images(nfl_points_dict, "avg_points_against", "avg_points_for", ax)
 
 plt.show()
