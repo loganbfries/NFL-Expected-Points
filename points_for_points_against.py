@@ -55,7 +55,6 @@ for indx, game in completed_games.iterrows():
     opponent_team_name = game["opp_name"]
 
     week = game["week"]
-    print(week)
 
     # Creates variables for the listed teams score and their opponents scores.
     team_score = game["tm_score"]
