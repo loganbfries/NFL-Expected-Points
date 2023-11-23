@@ -124,6 +124,17 @@ for team in teams:
 ax.axvline(x=league_median_points_against, ls="--", color="gray", alpha=0.3)
 ax.axhline(y=league_median_points_for, ls="--", color="gray", alpha=0.3)
 
+# Plots text for league medians.
+ax.text(
+    league_median_points_against + 0.05,
+    league_median_points_for + 0.1,
+    "League" "\n" "Median",
+    horizontalalignment="left",
+    size=6,
+    color="gray",
+    weight="bold",
+)
+
 plt.suptitle("Avg Points For vs. Avg Points Against", size=14, y=0.95)
 
 plt.title(
