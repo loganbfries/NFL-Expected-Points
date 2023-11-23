@@ -66,7 +66,7 @@ def calculate_league_medians(teams, nfl_points_dict):
 def images(dict, xcol, ycol, graph_name):
     for team in dict.keys():
         arr_img = plt.imread(
-            "/Users/loganfries/iCloud/SportsAnalytics/NFL/Logos/{team}.png".format(
+            "/Users/loganfries/iCloud/SportsAnalytics/NFL/Logos/{team}/{team}.png".format(
                 team=team
             )
         )
@@ -116,5 +116,10 @@ for team in teams:
     ax.scatter(
         nfl_points_dict[team]["avg_points_for"],
         nfl_points_dict[team]["avg_points_against"],
-        label=team,
+        s=1,
+        color="white",
     )
+
+images(nfl_points_dict, "avg_points_for", "avg_points_against", ax)
+
+plt.show()
