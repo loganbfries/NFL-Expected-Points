@@ -3,6 +3,7 @@ import nfl_data_py as nfl
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 week = sys.argv[1]
 
@@ -60,6 +61,20 @@ def calculate_league_medians(teams, nfl_points_dict):
             avg_points_against.append(nfl_points_dict[team]["avg_points_against"][week])
 
     return np.median(avg_points_for), np.median(avg_points_against)
+
+
+def images(dict, xcol, ycol, graph_name):
+    for team in dict.keys():
+        arr_img = plt.imread(
+            "/Users/loganfries/iCloud/SportsAnalytics/NFL/Logos/{team}.png".format(
+                team=team
+            )
+        )
+        imagebox = OffsetImage(arr_img, zoom=0.04)
+        ab = AnnotationBbox(
+            imagebox, (dict[team][xcol], dict[team][ycol]), frameon=False
+        )
+        graph_name.add_artist(ab)
 
 
 nfl_points_dict = create_team_points_dict(teams)
