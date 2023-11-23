@@ -50,15 +50,11 @@ def calculate_avg_points(teams, nfl_points_dict):
 
 # Calculates the median points for and points against across the league.
 def calculate_league_medians(teams, nfl_points_dict):
+    avg_points_for = []
+    avg_points_against = []
     for team in teams:
-        weeks = list(nfl_points_dict[team]["points_for"].keys())
-
-        avg_points_for = []
-        avg_points_against = []
-
-        for week in weeks:
-            avg_points_for.append(nfl_points_dict[team]["avg_points_for"][week])
-            avg_points_against.append(nfl_points_dict[team]["avg_points_against"][week])
+        avg_points_for.append(nfl_points_dict[team]["avg_points_for"])
+        avg_points_against.append(nfl_points_dict[team]["avg_points_against"])
 
     return np.median(avg_points_for), np.median(avg_points_against)
 
@@ -109,6 +105,10 @@ for indx, game in completed_games.iterrows():
 
 calculate_avg_points(teams, nfl_points_dict)
 
+league_median_points_for, league_median_points_against = calculate_league_medians(
+    teams, nfl_points_dict
+)
+
 dimensions = (7, 7)
 fig, ax = plt.subplots(figsize=dimensions)
 
@@ -119,6 +119,10 @@ for team in teams:
         s=1,
         color="white",
     )
+
+# Plots the league medians as grey dashed lines.
+ax.axvline(x=league_median_points_against, ls="--", color="gray", alpha=0.3)
+ax.axhline(y=league_median_points_for, ls="--", color="gray", alpha=0.3)
 
 plt.suptitle("Avg Points For vs. Avg Points Against", size=14, y=0.95)
 
