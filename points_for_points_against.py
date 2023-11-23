@@ -21,8 +21,8 @@ def create_team_points_dict(teams):
 
     for team in teams:
         nfl_points_dict[team] = {}
-        nfl_points_dict[team]["points_for"] = []
-        nfl_points_dict[team]["points_against"] = []
+        nfl_points_dict[team]["points_for"] = {}
+        nfl_points_dict[team]["points_against"] = {}
         nfl_points_dict[team]["avg_points_for"] = []
         nfl_points_dict[team]["avg_points_against"] = []
 
@@ -38,17 +38,24 @@ for indx, game in completed_games.iterrows():
     team_name = game["tm_name"]
     opponent_team_name = game["opp_name"]
 
+    week = game["week"]
+    print(week)
+
     # Creates variables for the listed teams score and their opponents scores.
     team_score = game["tm_score"]
     opponent_score = game["opp_score"]
 
     # Adds the points for and points against data to the dictionary.
-    nfl_points_dict[team_name]["points_for"].append(team_score)
-    nfl_points_dict[team_name]["points_against"].append(opponent_score)
+    nfl_points_dict[team_name]["points_for"][
+        "Week {week}".format(week=week)
+    ] = team_score
+    nfl_points_dict[team_name]["points_against"][
+        "Week {week}".format(week=week)
+    ] = opponent_score
 
-    nfl_points_dict[opponent_team_name]["points_for"].append(opponent_score)
-    nfl_points_dict[opponent_team_name]["points_against"].append(team_score)
-
-for key in nfl_points_dict:
-    print(key, nfl_points_dict[key])
-    print()
+    nfl_points_dict[opponent_team_name]["points_for"][
+        "Week {week}".format(week=week)
+    ] = opponent_score
+    nfl_points_dict[opponent_team_name]["points_against"][
+        "Week {week}".format(week=week)
+    ] = team_score
