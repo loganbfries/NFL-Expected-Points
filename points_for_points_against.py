@@ -206,7 +206,7 @@ plt.text(
 plt.text(
     0.98,
     0.06,
-    "Good Offense",
+    "Bad Offense",
     horizontalalignment="right",
     verticalalignment="top",
     size=8,
@@ -217,7 +217,7 @@ plt.text(
 plt.text(
     0.98,
     0.04,
-    "Bad Defense",
+    "Good Defense",
     horizontalalignment="right",
     verticalalignment="top",
     size=8,
@@ -254,7 +254,7 @@ plt.text(
 plt.text(
     0.02,
     0.98,
-    "Bad Offense",
+    "Good Offense",
     horizontalalignment="left",
     verticalalignment="top",
     size=8,
@@ -265,7 +265,7 @@ plt.text(
 plt.text(
     0.02,
     0.96,
-    "Good Defense",
+    "Bad Defense",
     horizontalalignment="left",
     verticalalignment="top",
     size=8,
