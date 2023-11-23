@@ -156,8 +156,8 @@ ax.axhline(y=league_median_points_for, ls="--", color="gray", alpha=0.3)
 
 # Plots text for league medians.
 ax.text(
-    league_median_points_against + 0.05,
-    league_median_points_for + 0.1,
+    league_median_points_against + 1.1,
+    league_median_points_for + 0.5,
     "League" "\n" "Median",
     horizontalalignment="left",
     size=6,
@@ -274,12 +274,21 @@ plt.text(
     transform=ax.transAxes,
 )
 
+plot_bound_adjustment = 2
+
 ax.set_xbound(
-    lower=league_min_points_against - 5,
-    upper=league_max_points_against + 5,
+    lower=league_min_points_against - plot_bound_adjustment,
+    upper=league_max_points_against + plot_bound_adjustment,
 )
-ax.set_ybound(upper=league_max_points_for + 5, lower=league_min_points_for - 5)
+ax.set_ybound(
+    upper=league_max_points_for + plot_bound_adjustment,
+    lower=league_min_points_for - plot_bound_adjustment,
+)
 
 images(nfl_points_dict, "avg_points_against", "avg_points_for", ax)
 
-plt.show()
+plt.savefig(
+    "/Users/loganfries/iCloud/SportsAnalytics/NFL/Plots/points_for_points_against.png",
+    bbox_inches="tight",
+    dpi=300,
+)
