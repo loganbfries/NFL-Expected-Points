@@ -1,6 +1,7 @@
 import nflscraPy
 import nfl_data_py as nfl
 import sys
+import numpy as np
 
 week = sys.argv[1]
 
@@ -27,6 +28,21 @@ def create_team_points_dict(teams):
         nfl_points_dict[team]["avg_points_against"] = []
 
     return nfl_points_dict
+
+
+def calculate_avg_points(teams, nfl_points_dict):
+    for team in teams:
+        weeks = list(nfl_points_dict[team]["points_for"].keys())
+
+        points_for = []
+        points_against = []
+
+        for week in weeks:
+            points_for.append(nfl_points_dict[team]["points_for"][week])
+            points_against.append(nfl_points_dict[team]["points_against"][week])
+
+        nfl_points_dict[team]["avg_points_for"] = np.average(points_for)
+        nfl_points_dict[team]["avg_points_against"] = np.average(points_against)
 
 
 nfl_points_dict = create_team_points_dict(teams)
@@ -59,3 +75,5 @@ for indx, game in completed_games.iterrows():
     nfl_points_dict[opponent_team_name]["points_against"][
         "Week {week}".format(week=week)
     ] = team_score
+
+calculate_avg_points(teams, nfl_points_dict)
