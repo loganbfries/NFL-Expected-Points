@@ -136,6 +136,103 @@ ax.set_ylabel("Avg Points For", fontsize=16)
 
 ax.invert_xaxis()
 
+# Text for top right quadrant.
+plt.text(
+    0.98,
+    0.98,
+    "Good Offense",
+    horizontalalignment="right",
+    verticalalignment="top",
+    size=8,
+    color="green",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+plt.text(
+    0.98,
+    0.96,
+    "Good Defense",
+    horizontalalignment="right",
+    verticalalignment="top",
+    size=8,
+    color="green",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+
+
+# Text for bottom right quadrant.
+plt.text(
+    0.98,
+    0.06,
+    "Good Offense",
+    horizontalalignment="right",
+    verticalalignment="top",
+    size=8,
+    color="green",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+plt.text(
+    0.98,
+    0.04,
+    "Bad Defense",
+    horizontalalignment="right",
+    verticalalignment="top",
+    size=8,
+    color="red",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+
+# Text for bottom left quadrant.
+plt.text(
+    0.02,
+    0.06,
+    "Bad Offense",
+    horizontalalignment="left",
+    verticalalignment="top",
+    size=8,
+    color="red",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+plt.text(
+    0.02,
+    0.04,
+    "Bad Defense",
+    horizontalalignment="left",
+    verticalalignment="top",
+    size=8,
+    color="red",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+
+# Text for top left quadrant.
+plt.text(
+    0.02,
+    0.98,
+    "Bad Offense",
+    horizontalalignment="left",
+    verticalalignment="top",
+    size=8,
+    color="red",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+plt.text(
+    0.02,
+    0.96,
+    "Good Defense",
+    horizontalalignment="left",
+    verticalalignment="top",
+    size=8,
+    color="green",
+    weight="semibold",
+    transform=ax.transAxes,
+)
+
 images(nfl_points_dict, "avg_points_against", "avg_points_for", ax)
 
 plt.show()
