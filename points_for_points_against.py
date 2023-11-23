@@ -56,7 +56,30 @@ def calculate_league_medians(teams, nfl_points_dict):
         avg_points_for.append(nfl_points_dict[team]["avg_points_for"])
         avg_points_against.append(nfl_points_dict[team]["avg_points_against"])
 
-    return np.median(avg_points_for), np.median(avg_points_against)
+    return (
+        np.median(avg_points_for),
+        np.median(avg_points_against),
+    )
+
+
+def calculate_league_maxes(teams, nfl_points_dict):
+    avg_points_for = []
+    avg_points_against = []
+    for team in teams:
+        avg_points_for.append(nfl_points_dict[team]["avg_points_for"])
+        avg_points_against.append(nfl_points_dict[team]["avg_points_against"])
+
+    return np.max(avg_points_for), np.max(avg_points_against)
+
+
+def calculate_league_mins(teams, nfl_points_dict):
+    avg_points_for = []
+    avg_points_against = []
+    for team in teams:
+        avg_points_for.append(nfl_points_dict[team]["avg_points_for"])
+        avg_points_against.append(nfl_points_dict[team]["avg_points_against"])
+
+    return np.min(avg_points_for), np.min(avg_points_against)
 
 
 def images(dict, xcol, ycol, graph_name):
@@ -106,6 +129,13 @@ for indx, game in completed_games.iterrows():
 calculate_avg_points(teams, nfl_points_dict)
 
 league_median_points_for, league_median_points_against = calculate_league_medians(
+    teams, nfl_points_dict
+)
+
+league_max_points_for, league_max_points_against = calculate_league_maxes(
+    teams, nfl_points_dict
+)
+league_min_points_for, league_min_points_against = calculate_league_mins(
     teams, nfl_points_dict
 )
 
@@ -243,6 +273,12 @@ plt.text(
     weight="semibold",
     transform=ax.transAxes,
 )
+
+ax.set_xbound(
+    lower=league_min_points_against - 5,
+    upper=league_max_points_against + 5,
+)
+ax.set_ybound(upper=league_max_points_for + 5, lower=league_min_points_for - 5)
 
 images(nfl_points_dict, "avg_points_against", "avg_points_for", ax)
 
