@@ -2,6 +2,7 @@ import nflscraPy
 import nfl_data_py as nfl
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
 
 week = sys.argv[1]
 
@@ -92,3 +93,13 @@ for indx, game in completed_games.iterrows():
     ] = team_score
 
 calculate_avg_points(teams, nfl_points_dict)
+
+dimensions = (7, 7)
+fig, ax = plt.subplots(figsize=dimensions)
+
+for team in teams:
+    ax.scatter(
+        nfl_points_dict[team]["avg_points_for"],
+        nfl_points_dict[team]["avg_points_against"],
+        label=team,
+    )
