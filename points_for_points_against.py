@@ -8,6 +8,9 @@ week = sys.argv[1]
 season_gamelogs = nflscraPy._gamelogs(2023)
 completed_games = season_gamelogs[season_gamelogs["status"] == "closed"]
 
+# Cut the data down to <= the specified week.
+completed_games = completed_games[completed_games["week"] <= int(week)]
+
 # Create a list of all team names.
 teams = season_gamelogs["tm_name"].unique()
 
