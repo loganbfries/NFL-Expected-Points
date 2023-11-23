@@ -30,6 +30,7 @@ def create_team_points_dict(teams):
     return nfl_points_dict
 
 
+# Goes through each team and calculates their average points for and points against across all weeks.
 def calculate_avg_points(teams, nfl_points_dict):
     for team in teams:
         weeks = list(nfl_points_dict[team]["points_for"].keys())
@@ -43,6 +44,21 @@ def calculate_avg_points(teams, nfl_points_dict):
 
         nfl_points_dict[team]["avg_points_for"] = np.average(points_for)
         nfl_points_dict[team]["avg_points_against"] = np.average(points_against)
+
+
+# Calculates the median points for and points against across the league.
+def calculate_league_medians(teams, nfl_points_dict):
+    for team in teams:
+        weeks = list(nfl_points_dict[team]["points_for"].keys())
+
+        avg_points_for = []
+        avg_points_against = []
+
+        for week in weeks:
+            avg_points_for.append(nfl_points_dict[team]["avg_points_for"][week])
+            avg_points_against.append(nfl_points_dict[team]["avg_points_against"][week])
+
+    return np.median(avg_points_for), np.median(avg_points_against)
 
 
 nfl_points_dict = create_team_points_dict(teams)
