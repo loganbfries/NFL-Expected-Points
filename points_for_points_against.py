@@ -288,7 +288,9 @@ ax.set_ybound(
 images(nfl_points_dict, "avg_points_against", "avg_points_for", ax)
 
 plt.savefig(
-    "/Users/loganfries/iCloud/SportsAnalytics/NFL/Plots/points_for_points_against.png",
+    "/Users/loganfries/iCloud/SportsAnalytics/NFL/Plots/points_for_points_against_week_{week}.png".format(
+        week=week
+    ),
     bbox_inches="tight",
     dpi=300,
 )
